@@ -38,7 +38,7 @@ export class DataBasePostgres{
 
     async delete(id){
 
-        await sql`delete from carts where id = ${id}`
+        await sql`delete from products where id = ${id}`
 
     }
 

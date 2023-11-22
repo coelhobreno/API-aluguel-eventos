@@ -38,20 +38,9 @@ server.post('/products', async(request, reply) => {
 //DELETES
 server.delete('/products/:id', async(request, reply) => {
 
-    const id_carts = request.params.id
+    const productId = request.params.id
 
-    await database.delete(id_carts)
-
-    return reply.status(204).send()
-
-})
-
-//UPDATES
-server.put('/products/:id', async(request, reply) => {
-
-    const id_carts = request.params.id
-
-    await database.delete(id_carts)
+    await database.delete(productId)
 
     return reply.status(204).send()
 

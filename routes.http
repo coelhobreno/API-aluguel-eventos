@@ -1,22 +1,13 @@
-GET http://localhost:3333/products?search=mesa
+GET https://aluguel-eventos.onrender.com/products?search=
 ###
-POST http://localhost:3333/products
+POST https://aluguel-eventos.onrender.com/products
 Content-Type: application/json 
 
 {
-    "name": "Faca",
-    "description": "30 facas serra ouro",
-    "price": 40
+    "name": "Garfo",
+    "description": "30 garfos de prata",
+    "price": 85.90,
+    "image": "url_garfo"
 }
 ###
-GET http://localhost:3333/carts?user=7cJWrDyKfLeOBOjiI7ryGvzc9Ph1
-###
-POST http://localhost:3333/carts
-Content-Type: application/json 
-
-{
-    "id_user": "7cJWrDyKfLeOBOjiI7ryGvzc9Ph1",
-    "id_product": "9aa71ac4-7227-41f6-908a-de39c6756bbb"
-}
-###
-DELETE http://localhost:3333/carts/a44f9a56-7e09-494b-b931-73d10e99d2c0
+DELETE https://aluguel-eventos.onrender.com/products/3823a970-5b00-4de1-9616-36cf6d180d1f
