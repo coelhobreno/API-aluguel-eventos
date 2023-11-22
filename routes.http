@@ -1,0 +1,22 @@
+GET http://localhost:3333/products?search=mesa
+###
+POST http://localhost:3333/products
+Content-Type: application/json 
+
+{
+    "name": "Faca",
+    "description": "30 facas serra ouro",
+    "price": 40
+}
+###
+GET http://localhost:3333/carts?user=7cJWrDyKfLeOBOjiI7ryGvzc9Ph1
+###
+POST http://localhost:3333/carts
+Content-Type: application/json 
+
+{
+    "id_user": "7cJWrDyKfLeOBOjiI7ryGvzc9Ph1",
+    "id_product": "9aa71ac4-7227-41f6-908a-de39c6756bbb"
+}
+###
+DELETE http://localhost:3333/carts/a44f9a56-7e09-494b-b931-73d10e99d2c0
