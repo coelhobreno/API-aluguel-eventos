@@ -4,10 +4,10 @@ POST https://aluguel-eventos.onrender.com/products
 Content-Type: application/json 
 
 {
-    "name": "Garfo",
-    "description": "30 garfos de prata",
-    "price": 85.90,
-    "image": "url_garfo"
-}
+    "name": "Cadeira",
+    "description": "Aluguel Cadeira de Ferro",
+    "price": "59.90",
+    "image": "https://alugueldemesasecadeirasrjj.com.br/wp-content/uploads/2018/12/Cadeira-de-Ferro-1024x1024.jpg"
+  }
 ###
-DELETE https://aluguel-eventos.onrender.com/products/3823a970-5b00-4de1-9616-36cf6d180d1f
+DELETE https://aluguel-eventos.onrender.com/products/105c4e37-67f7-4dd4-9d05-026bd7896d82

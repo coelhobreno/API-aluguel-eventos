@@ -1,9 +1,15 @@
 import { fastify } from 'fastify'
 import { DataBasePostgres } from './database.postgres.js'
 
+//VARIABLE CORS
+const cors = require('cors')
+
 const server = fastify()
 
 const database = new DataBasePostgres()
+
+//CONFIG CORS
+server.use(cors())
 
 //GET PRODUCTS
 server.get('/products', async(request, reply) => {
@@ -30,7 +36,7 @@ server.post('/products', async(request, reply) => {
         image
     }, "products")
 
-    reply.status(201).send()
+    return reply.status(201).send()
     
 
 })
