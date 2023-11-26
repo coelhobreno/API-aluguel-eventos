@@ -1,16 +1,16 @@
 import { fastify } from 'fastify'
 import { DataBasePostgres } from './database.postgres.js'
 
-//IMPORT CORS
-import fastifyCors from 'fastify-cors';
-
 const server = fastify()
 
 const database = new DataBasePostgres()
 
 //CONFIG CORS
-server.register(fastifyCors, {
-  origin: '*', // Troque para o domínio permitido ou use '*' para permitir todos (não recomendado em produção)
+server.addHook('onRequest', (req, reply, done) => {
+  reply.header('Access-Control-Allow-Origin', '*');
+  reply.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  reply.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  done();
 });
 
 //GET PRODUCTS
