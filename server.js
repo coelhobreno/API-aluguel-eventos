@@ -1,8 +1,8 @@
 import { fastify } from 'fastify'
 import { DataBasePostgres } from './database.postgres.js'
 
-//VARIABLE CORS
-const cors = require('cors')
+//IMPORT CORS
+import cors from 'cors';
 
 const server = fastify()
 
