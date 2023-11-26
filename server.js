@@ -2,14 +2,16 @@ import { fastify } from 'fastify'
 import { DataBasePostgres } from './database.postgres.js'
 
 //IMPORT CORS
-import cors from 'cors';
+import fastifyCors from 'fastify-cors';
 
 const server = fastify()
 
 const database = new DataBasePostgres()
 
 //CONFIG CORS
-server.use(cors())
+server.register(fastifyCors, {
+  origin: '*', // Troque para o domínio permitido ou use '*' para permitir todos (não recomendado em produção)
+});
 
 //GET PRODUCTS
 server.get('/products', async(request, reply) => {
