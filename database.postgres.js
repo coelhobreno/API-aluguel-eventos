@@ -11,10 +11,12 @@ export class DataBasePostgres{
 
         if(search){
 
-            const query = `SELECT * FROM products WHERE name ILIKE ANY(ARRAY[${searchTerms.map(term => '%' + term + '%')}])`
+            const searchTerms = search.split(',').map(term => term.trim());
+
+            const query = sql`SELECT * FROM products WHERE name ILIKE ANY(ARRAY[${searchTerms.map(term => '%' + term + '%')}])`
 
         
-            products = await sql`SELECT * FROM products`
+            products = await query;
 
         }else{
 
