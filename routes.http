@@ -1,4 +1,4 @@
-GET https://aluguel-eventos.onrender.com/products?search=mesa
+GET https://aluguel-eventos.onrender.com/products?search=mesa,garfo
 ###
 POST https://aluguel-eventos.onrender.com/products
 Content-Type: application/json 
