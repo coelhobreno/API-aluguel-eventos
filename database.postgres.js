@@ -13,10 +13,10 @@ export class DataBasePostgres{
 
             const searchTerms = search.split(',').map(term => term.trim());
 
-            const query = sql`SELECT * FROM products WHERE name ILIKE ANY(ARRAY[${searchTerms.map(term => '%' + term + '%')}])`
+            const query = await sql`SELECT * FROM products WHERE name ILIKE ANY(ARRAY[${searchTerms.map(term => '%' + term + '%')}])`
 
         
-            products = await query;
+            products = query;
 
         }else{
 

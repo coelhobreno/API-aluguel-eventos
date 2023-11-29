@@ -17,6 +17,8 @@ server.addHook('onRequest', (req, reply, done) => {
 server.get('/products', async(request, reply) => {
 
     const search = request.query.search
+    
+    
 
     const products = await database.list(search)
 
