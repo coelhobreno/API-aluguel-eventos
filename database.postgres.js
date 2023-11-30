@@ -6,25 +6,28 @@ export class DataBasePostgres{
     
     //Função p/ get
     async list(search){
-        
+
         let products
-
+        
         if(search){
-            const searchString = `${search}`
-            
-            const searchTerms = search.split(',').map(term => term.trim());
 
-            const query = await sql`SELECT * FROM products WHERE name ILIKE ANY(ARRAY[${searchTerms.map(term => '%' + term + '%')}])`
+            const searchTerms = search.split(/[+ ]/).map((term) => term.trim());
+            let query = "SELECT * FROM products WHERE"
+            for(let i=0 ;i < searchTerms.length; i++){
+                query += `name ILIKE ${'%'+ searchTerms[i] +'%'}`
+                if(i !== searchTerms.length - 1){
+                query += " OR ";
+                }
+            }
             
-
-            products = query;
+            products = await sql`${query}`
 
         }else{
 
             products = await sql`SELECT * FROM products`
 
         }
-        
+
         return products
 
     }
