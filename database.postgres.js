@@ -11,16 +11,15 @@ export class DataBasePostgres{
         
         if(search){
 
-            const searchTerms = search.split(/[+ ]/).map((term) => term.trim());
-            let query = "SELECT * FROM products WHERE"
-            for(let i=0 ;i < searchTerms.length; i++){
-                query += `name ILIKE ${'%'+ searchTerms[i] +'%'}`
-                if(i !== searchTerms.length - 1){
-                query += " OR ";
-                }
-            }
+            const searchTerms = search.split(/[+ ]/).map(term => term.trim());
+
+            const query = sql`
+            SELECT * FROM products
+            WHERE name ILIKE ANY(${searchTerms.map(term => '%' + term + '%')})
+            `;
             
             products = await sql`${query}`
+            
 
         }else{
 
