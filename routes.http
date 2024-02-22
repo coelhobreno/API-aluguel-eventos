@@ -31,7 +31,7 @@ Content-Type: application/json
 
 
 ###
-GET https://back-aluguel-eventos.onrender.com/products
+POST http://localhost:3333/login
 Content-Type: application/json
 
 {

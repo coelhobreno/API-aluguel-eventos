@@ -2,7 +2,7 @@ import { DataBaseMemory } from "./database-postgres.js";
 
 import fastify from "fastify";
 import jwt from "jsonwebtoken"
-import { genSalt, hash, compare } from 'bcrypt'
+import bcrypt from 'bcrypt'
 
 const server = fastify()
 const database = new DataBaseMemory()
@@ -72,11 +72,11 @@ server.post('/register', async(request, reply) => {
 
         //Gerando salt para usar na geração do hash (Ou seja, uma sequencia de caracteres aleatórios que é adicionado a senha antes de ser criptografado)
         const saltRounds = 10; //Definindo 10 caractecteres aleatórios
-        const salt = await genSalt(saltRounds)
+        const salt = await bcrypt.genSalt(saltRounds)
         
 
         //Gerar o hash da senha utilizando o salt
-        const hashedPassword = await hash(password, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
         //Se este email não estiver cadastrado, pode-se prosseguir
         //Criando usuário
@@ -111,7 +111,7 @@ server.post('/login', async(request, reply) => {
     }
 
     //comparar a senha fornecida com a senha armazenada
-    const isPasswordValid = await compare(password, user[0].password)
+    const isPasswordValid = await bcrypt.compare(password, user[0].password)
     if(!isPasswordValid) {
         return reply.status(401).send({
             message: "Credenciais Inválidas"
