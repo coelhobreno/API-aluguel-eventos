@@ -8,11 +8,19 @@ const server = fastify()
 const database = new DataBaseMemory()
 
 //CONFIG CORS
-server.addHook('onRequest', async (req, reply, done) => {
+server.addHook('onRequest', (req, reply, done) => {
   reply.header('Access-Control-Allow-Origin', '*');
   reply.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   reply.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   done();
+});
+
+//CONFIG CORS FROM /LOGIN
+server.options('/login', (req, reply) => {
+  reply.header('Access-Control-Allow-Origin', '*');
+  reply.header('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  reply.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  reply.send();
 });
 
 //PRODUCTS
